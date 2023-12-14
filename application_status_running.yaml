@@ -1,6 +1,6 @@
 ---
 - name: Monitor ISE Application Status
-  hosts: ise
+  hosts: ise_nodes
   gather_facts: no
   tasks:
 
