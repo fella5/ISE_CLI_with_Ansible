@@ -1,6 +1,6 @@
 ---
 - name: Configure DNS Service Cache
-  hosts: ise
+  hosts: ise_nodes
   gather_facts: no
   tasks:
     - name: Enable DNS Caching | {{ inventory_hostname }}
