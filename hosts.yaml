@@ -25,16 +25,16 @@ all:
     ise_nodes:
       hosts:
         ise:
-          ansible_host: 172.31.2.11 # ⭐ Change me to your ISE node's IP address!
+          ansible_host: 10.10.250.50 # ⭐ Change me to your ISE node's IP address!
         # ▼ You can add more ISE nodes here ▼
-        # ise-2:
-        #   ansible_host: 172.31.2.12 # ⭐ Change me to your ISE node's IP address!
+        ise-2:
+          ansible_host: 10.10.250.51 # ⭐ Change me to your ISE node's IP address!
       vars: # these group_vars are shared among the ISE nodes
         ansible_become: no # ISE does not have a superuser/enable mode
         ansible_connection: ansible.netcommon.network_cli
         ansible_network_os: cisco.ios.ios
         # ⭐ ISE SSH username is `iseadmin` for ISE 3.2+ cloud instances!
-        ansible_ssh_user:     "{{ lookup('env','ISE_SSH_USERNAME') }}"
+        ansible_ssh_user:     "{{ lookup('env','ISE_USERNAME') }}"
         # ⭐ Un/Comment the SSH password or private_key_file - whichever you use!
-        ansible_ssh_password: "{{ lookup('env','ISE_SSH_PASSWORD') }}"
+        ansible_ssh_password: "{{ lookup('env','ISE_PASSWORD') }}"
         # ansible_ssh_private_key_file: ~/.ssh/id_rsa
