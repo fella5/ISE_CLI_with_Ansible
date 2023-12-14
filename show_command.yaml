@@ -1,0 +1,24 @@
+---
+- name: Show ISE Command
+  hosts: ise
+  gather_facts: no
+  tasks:
+    - pause:
+        prompt: "Please enter the show command"
+        echo: yes
+      register: prompt_input
+      changed_when: no
+    
+    - name: standardize userInput variable 
+      set_fact:
+        userInput: "{{ prompt_input.user_input }}"
+        cacheable: yes
+
+    - name: ISE CLI | {{ userInput }}
+      ansible.netcommon.cli_command:
+        command: "{{ userInput }}"
+      register: output
+
+    - name: Show output
+      ansible.builtin.debug:
+        msg: "{{ output.stdout | replace('\n\n','\n') }}" # remove empty lines
