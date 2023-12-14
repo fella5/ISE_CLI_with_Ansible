@@ -1,6 +1,6 @@
 ---
 - name: Show ISE Version
-  hosts: ise
+  hosts: ise-1
   gather_facts: no
   tasks:
     - name: ISE CLI | show version
